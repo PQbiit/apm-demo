@@ -8,6 +8,7 @@ const rollbar = new Rollbar({
 });
 
 const app = express();
+app.use(rollbar.errorHandler());
 const port = process.env.PORT || 4400;
 const students = [];
 
@@ -22,6 +23,8 @@ app.post('/api/student',(req,res)=>{
     students.push(name);
     rollbar.log('student added successfully',{author:'DJ', type: 'manual entry'});
     res.status(200).send(students);
-})
+});
+
+
 
 app.listen(port,()=> console.log(`server running on port ${port}!`))
