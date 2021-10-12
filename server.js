@@ -9,10 +9,19 @@ const rollbar = new Rollbar({
 
 const app = express();
 const port = process.env.PORT || 4400;
+const students = [];
 
 app.get('/', (req,res) =>{
     res.sendFile(path.join(__dirname,'/public/index.html'));
     rollbar.info('HTML file served successfully');
 });
+
+app.post('/api/student',(req,res)=>{
+    let {name} = req.body;
+    name = name.trim();
+    students.push(name);
+    rollbar.log('student added successfully',{author:'DJ', type: 'manual entry'});
+    res.status(200).send(students);
+})
 
 app.listen(port,()=> console.log(`server running on port ${port}!`))
