@@ -9,6 +9,8 @@ const rollbar = new Rollbar({
 
 const app = express();
 app.use(express.json());
+app.use('/style',express.static(path.join(__dirname,'/public/styles.css')));
+
 const port = process.env.PORT || 4400;
 const students = [];
 
