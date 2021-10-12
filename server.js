@@ -32,6 +32,12 @@ app.get('/fake-function',(req,res) =>{
 app.post('/api/student',(req,res)=>{
     let {name} = req.body;
     name = name.trim();
+
+    if(!isNaN(name)){
+        //Recieved numbers
+        rollbar.warning('Recieved numbers instead of string');
+    }
+
     const index = students.findIndex(studentName=> studentName === name)
     if(index === -1 && name !== ''){
         students.push(name)
