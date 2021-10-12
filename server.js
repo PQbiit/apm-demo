@@ -24,6 +24,7 @@ app.get('/fake-function',(req,res) =>{
         fakeFunction();
     } catch (err) {
         console.log(err);
+        res.status(400).send(err)
     }
 });
 
