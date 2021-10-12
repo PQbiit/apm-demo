@@ -15,10 +15,14 @@
         <button>Add Student</button>
     </form>
     <section></section>
+    <div>
+        <button id="test-function">Test fake funtion</button>
+    </div>
     <script>
         const addForm = document.querySelector('form')
         const nameInput = document.querySelector('input')
         const container = document.querySelector('section')
+        const testBtn = document.querySelector('#test-function');
 
         function submitHandler(e){
             e.preventDefault()
@@ -48,6 +52,13 @@
         }
 
         addForm.addEventListener('submit', submitHandler)
+        testBtn.addEventListener('click',()=>{
+            axios.get('/fake-function').then(res =>{
+                console.log(res);
+            }).catch(err =>{
+                console.log(err);
+            })
+        });
     </script>
 </body>
 </html>

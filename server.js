@@ -19,6 +19,14 @@ app.get('/', (req,res) =>{
     rollbar.info('HTML file served successfully');
 });
 
+app.get('/fake-function',(req,res) =>{
+    try {
+        fakeFunction();
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 app.post('/api/student',(req,res)=>{
     let {name} = req.body;
     name = name.trim();
