@@ -8,7 +8,7 @@ const rollbar = new Rollbar({
 });
 
 const app = express();
-//app.use(express.json());
+app.use(express.json());
 const port = process.env.PORT || 4400;
 const students = [];
 
