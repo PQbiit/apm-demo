@@ -19,14 +19,14 @@ app.get('/', (req,res) =>{
     rollbar.info('HTML file served successfully');
 });
 
-app.get('/fake-function',(req,res) =>{
-    try {
-        fakeFunction();
-    } catch (err) {
-        console.log(err);
-        res.status(400).send(err)
-    }
-});
+// app.get('/fake-function',(req,res) =>{
+//     try {
+//         fakeFunction();
+//     } catch (err) {
+//         rollbar.log()
+//         res.status(400).send(err)
+//     }
+// });
 
 app.post('/api/student',(req,res)=>{
     let {name} = req.body;
