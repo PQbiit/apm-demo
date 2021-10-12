@@ -6,7 +6,7 @@ const rollbar = new Rollbar({
     captureUncaught: true,
     captureUnhandledRejections: true
 });
-// type="text/css"
+
 const app = express();
 app.use(express.json());
 app.use('/style',express.static(path.join(__dirname,'/public/styles.css')));
@@ -19,14 +19,15 @@ app.get('/', (req,res) =>{
     rollbar.info('HTML file served successfully');
 });
 
-// app.get('/fake-function',(req,res) =>{
-//     try {
-//         fakeFunction();
-//     } catch (err) {
-//         rollbar.log()
-//         res.status(400).send(err)
-//     }
-// });
+app.get('/fake-function',(req,res) =>{
+    try {
+        //This does not exist!
+        fakeFunction();
+    } catch (err) {
+        rollbar.critical('Call to a non existent function');
+        res.status(400).send(err)
+    }
+});
 
 app.post('/api/student',(req,res)=>{
     let {name} = req.body;
