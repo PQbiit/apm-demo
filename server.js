@@ -21,7 +21,7 @@ app.post('/api/student',(req,res)=>{
     let {name} = req.body;
     name = name.trim();
     students.push(name);
-    rollbar.log('student added successfully',{author:'DJ', type: 'manual entry'});
+    rollbar.log('student added successfully',{author:'LAAQ', type: 'manual entry'});
     res.status(200).send(students);
 });
 
